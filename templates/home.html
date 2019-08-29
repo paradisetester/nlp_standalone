@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>NLP Home</title>
+  </head>
+  <body>
+    {% extends "template.html" %}
+    {% block content %}
+
+   
+
+	
+	<!----nlp code start------------>
+<div class="nlp_wrapper">
+<div class="container wrapper">
+<h1 class="h1">Natural Language Processing</h1>
+
+			
+<button type="button" class="btn btn-info top_add" data-toggle="modal" data-target="#myModal" style="display:none">Add</button>
+<div  class="loader1">
+	<img src="{{ url_for('static', filename='images/loading4.gif') }}" />
+</div>
+ <table id="example" class="table table-striped">
+         <thead><tr>
+           <th>Title</th>
+                <th>Date</th>
+                <th>Content Type</th>
+                <th>Keytopics</th>
+                
+				<th>Files</th></tr>
+                </thead>
+		<tbody id="userdata">
+			
+		</tbody>
+	</table>
+           
+
+ <!-- Modal -->
+  <div class="modal fade nlp_popup" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+ <div class="modal-content">
+        
+        <div class="modal-body">
+		    <button type="button" class="close_btn" data-dismiss="modal">X</button>
+			<form id="form" enctype="multipart/form-data" >
+			<div class="form-group"><input type="text" name="title" id="title" placeholder="Title"></div>
+			<div class="form-group"><input type="date" placeholder="Date"  id="date"/></div>
+			<div class="form-group"><select class="js-example-basic-single" id="content_type" placeholder="Content Type" >
+			  <option value="Webinar">Webinar</option>
+			    <option value="Article">Article</option>
+			  <option value="White paper">White paper</option>
+			  <option value="Newsletter">Newsletter</option>
+			  <option value="50 State Survey">50 State Survey</option>
+			  <option value="Analytics">Analytics</option> 
+			  <option value="Insights">Insights</option>
+			  <option value="Regulatory Summary"> Regulatory Summary </option>
+			 <option value="Source">Source</option>
+			</select>
+			</div>
+
+			<div class="form-group"><select class="js-example-basic-multiple" placeholder="Key Topics"  multiple="multiple" id="key_topic" style="width: 100%">
+			  <option value="Digital Health">Digital Health</option>
+			    <option value="Fraud and Abuse">Fraud and Abuse</option>
+			  <option value="Insurance and Marketplace">Insurance and Marketplace</option>
+			  <option value="Life Sciences">Life Sciences</option>
+			  <option value="Litigation">Litigation</option>
+			  <option value="Medicaid">Medicaid</option>
+			  <option value="Medicare">Medicare</option>
+			 <option value="Payment and Delivery">Payment and Delivery</option>
+			 <option value="Transformation"></option>
+			<option value="Privacy and Security">Privacy and Security</option>
+			<option value="Anti-Trust">Anti-Trust</option>
+			</select></div>
+			<div class="form-group"><textarea id="content" placeholder="Content"  rows="5"></textarea></div>
+			<div class="input_file_outr">
+			<label>Choose File...
+			<input id="ups" type="file" name="file" /></label>
+			<div id="loader-icon" style="display:none;"><img src="https://manattosphere.ml/content/images/ajax-loader.gif" /></div>
+			</div>
+			<p id="sucessmsg" style="display:none;color:green"> File Uploaded successfully ! </p>
+			<button type="submit" id="upload">submit</button>
+		</form>
+		
+		
+        </div>
+      </div>     
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+<!-- Modal -->
+  <div class="modal fade nlp_popup" id="myModal1" role="dialog">
+    <div class="modal-dialog modal-lg">
+ <div class="modal-content">
+        
+        <div class="modal-body">
+		    <button type="button" class="close_btn" data-dismiss="modal">X</button>
+			<form id="form" enctype="multipart/form-data" >
+			<p><input type="text" name="title" id="title1" placeholder="Title"></p>
+			<p><input type="date" placeholder="Date"  id="date1"/></p>
+			<p><select class="js-example-basic-single1" id="content_type1" placeholder="Content Type" >
+			  <option value="Webinar">Webinar</option>
+			    <option value="Artical">Artical</option>
+			  <option value="White paper">White paper</option>
+			  <option value="Newsletter">Newsletter</option>
+			  <option value="50 States Survey">50 States Survey</option>
+			  <option value="Analytics">Analytics</option> 
+			  <option value="Insights">Insights</option>
+			  <option value="Regulatory Summary"> Regulatory Summary </option>
+			 <option value="Source">Source</option>
+			</select>
+			</p>
+
+			<p><select class="js-example-basic-multiple1" placeholder="Key Topics"  multiple="multiple" id="key_topic1" style="width: 100%">
+			  <option value="Digital Health">Digital Health</option>
+			    <option value="Fraud and Abuse">Fraud and Abuse</option>
+			  <option value="Insurance and Marketplace">Insurance and Marketplace</option>
+			  <option value="Life Sciences">Life Sciences</option>
+			  <option value="Litigation">Litigation</option>
+			  <option value="Medicaid">Medicaid</option>
+			  <option value="Medicare">Medicare</option
+			 <option value="Payment and Delivery">Payment and Delivery</option>
+			 <option value="Transformation"></option>
+			<option value="Privacy and Security">Privacy and Security</option>
+			<option value="Anti-Trust">Anti-Trust</option>
+			</select></p>
+			<p><textarea id="content1" placeholder="Content"  rows="5"></textarea></p>
+			
+			<!--button type="submit" id="upload">submit</button-->
+		</form>
+		
+		<div class="tabs_outr">
+
+  <!-- Nav tabs -->
+  
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation"><a href="#home" aria-controls="home" class="active" role="tab" data-toggle="tab">Entities</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Sentiment</a></li>
+    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Topic Keywords</a></li>
+    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Coherence Score</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content nlpp-tabs">
+    <div role="tabpanel" class="tab-pane active" id="home">
+	<div class="row">
+	  <ul class="pagination"></ul>
+	</div>
+	<div class="row" id="home2">
+	<div class="pb-3 col-lg-6"><div class="h-100 card card-body"><h5 class="card-title">package</h5><div><strong>Sentiment:</strong><small><strong class="pl-1">Magnitude</strong> 0.4<strong class="pl-1">Score</strong> -0.1</small></div><div><strong>Salience:</strong><small class="pl-1">0.063</small></div></div></div>
+	<div class="pb-3 col-lg-6"><div class="h-100 card card-body"><h5 class="card-title">package</h5><div><strong>Sentiment:</strong><small><strong class="pl-1">Magnitude</strong> 0.4<strong class="pl-1">Score</strong> -0.1</small></div><div><strong>Salience:</strong><small class="pl-1">0.063</small></div></div></div>
+	<div class="pb-3 col-lg-6"><div class="h-100 card card-body"><h5 class="card-title">package</h5><div><strong>Sentiment:</strong><small><strong class="pl-1">Magnitude</strong> 0.4<strong class="pl-1">Score</strong> -0.1</small></div><div><strong>Salience:</strong><small class="pl-1">0.063</small></div></div></div>
+	<div class="pb-3 col-lg-6"><div class="h-100 card card-body"><h5 class="card-title">package</h5><div><strong>Sentiment:</strong><small><strong class="pl-1">Magnitude</strong> 0.4<strong class="pl-1">Score</strong> -0.1</small></div><div><strong>Salience:</strong><small class="pl-1">0.063</small></div></div></div>
+	</div>
+	</div>
+    <div role="tabpanel" class="tab-pane" id="profile">
+<p>&nbsp;</p>
+<table id="tabledata">
+<thead>
+	<tr>
+	<th>Content</th>
+	<th>poplarity</th>
+	<th>Subjective</th>
+	</tr>
+</thead>
+<tbody id="profile1">
+
+</tbody>
+</table>
+
+
+    </div>
+    <div role="tabpanel" class="tab-pane" id="messages"><p>&nbsp;</p></div>
+    <div role="tabpanel" class="tab-pane" id="settings">..D..</div>
+  </div>
+
+</div>
+		
+        </div>
+      </div>     
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!----nlp code end------------>
+
+
+
+
+    
+    {% endblock %}
+  </body>
+</html>
